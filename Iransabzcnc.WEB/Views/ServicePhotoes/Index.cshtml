@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Iransabzcnc.Entities.ServicePhoto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Company service image list</h2>
+
+<p>
+    @Html.ActionLink("Create New Image", "Create",new { id = ViewBag.CompanyServiceID })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServicePhotoID, CompanyserviceId = ViewBag.CompanyServiceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServicePhotoID, CompanyserviceId = ViewBag.CompanyServiceID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@Html.ActionLink("Back to services", "Index", "CompanyServices")

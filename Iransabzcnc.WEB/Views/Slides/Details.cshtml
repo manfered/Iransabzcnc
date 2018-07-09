@@ -1,0 +1,35 @@
+﻿@model Iransabzcnc.Entities.Slide
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Slide</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SlidePhoto.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlidePhoto.FileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SlideID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

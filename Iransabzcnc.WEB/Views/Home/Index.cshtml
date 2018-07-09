@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "IranSabz-CNC.com صنایع فلزی ایران سبز";
+}
+
+<main ng-app="IransabzcncHomeViewer">
+
+
+    <section class="Welcome-Screen">
+
+
+        <section class="Slider-container">
+
+
+            <div id="carousel" class="carousel slide WelcomeSlider" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" ng-controller="SliderController">
+
+                    <div class="item"
+                         ng-class="{'active':!$index}"
+                         ng-repeat="obj in SliderArray"
+                         ng-style="{'background-image': 'url(../images/SlideImages/' + obj.SlidePhoto.FileName + ')'}">
+
+
+                        @*<div class="carousel-caption">
+                                <h3>{{obj.Name}}</h3>
+                                <p>{{obj.SlidePhoto.Title}}</p>
+                            </div>*@
+                    </div>
+
+
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+
+
+
+        </section>
+
+
+
+
+        @* Welcome Logo *@
+        <div class="welcome-logo">
+            <div class="welcome-logo-top"></div>
+            <div class="welcome-logo-left"></div>
+            <div class="welcome-logo-title">
+                <div class="welcome-logo-title-text">
+                    <h1>Iran<span class="mainColorSpan">Sabz</span>CNC</h1>
+                    <h2>صنایع فلزی ایران <span class="mainColorSpan">سبز</span></h2>
+                </div>
+            </div>
+            <div class="welcome-logo-bottom"></div>
+        </div>
+
+        @* Welcome tag *@
+        <div class="welcome-tag">
+            <span class="verticalSpan">Iran<span class="mainColorSpan">Sabz</span>CNC</span>
+        </div>
+    </section>
+
+    <section class="container"
+             id="aboutus"
+             ng-controller="AboutController">
+
+        <div class="row">
+            <div class="col-sm-6 intro-img">
+
+                <img class="img-responsive"
+                     src="/Images/Site/IranSabzCNC_intro.png"
+                     alt="IranSabzCNC"
+                     title="IranSabzCNC" />
+
+            </div>
+            <div class="col-sm-6 intro-desc"
+                 ng-repeat="obj in AboutArray">
+                <div class="row section-title-header"><h2>About Us</h2></div>
+                <div ng-bind-html="trustAsHtml(obj.Description)">
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="services"
+             class="container"
+             ng-controller="ServicesController">
+
+        <div class="row section-title-header"><h2>Services</h2></div>
+
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-4 service-item fadeInUp wow"
+                 ng-repeat="obj in ServicesArray">
+
+                <img ng-src="/Images/ServiceTitleImages/{{obj.ServiceIconPhoto.FileName}}"
+                     title="{{obj.ServiceIconPhoto.Title}}"
+                     alt="{{obj.ServiceIconPhoto.Title}}"
+                     class="img-responsive" />
+                <h3>
+                    {{obj.Title}}
+                </h3>
+                <p>{{obj.BriefDescription}}</p>
+                <a href="/Services/Details/{{obj.CompanyServiceID}}?Service={{obj.Title}}" title="Title1">Read more</a>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    @Html.Partial("_ContactUsPartial")
+    &nbsp;
+
+
+
+    <section class="row members-portion"
+             ng-controller="MemberController">
+
+        <div id="carousel-members" class="carousel slide MemberSlider" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner member-carousel-inner" role="listbox">
+
+                <div class="item"
+                     ng-repeat="obj in MembersArray"
+                     ng-class="{active:!$index}">
+                    @* marking the first class as active otherwise carousel won't be able to work *@
+
+                    <div class="member-item">
+                        <img ng-src="~/images/MemberImages/{{obj.MemberImage.FileName}}"
+                             class=""
+                             alt="{{obj.Name}}" />
+                        <div class="member-item-info">
+                            <p class="member-title">{{obj.Name}}</p>
+                            <p>{{obj.JobTitle}}</p>
+                        </div>
+                        <a class="" href="ContactURL" target="_blank"></a>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Controls -->
+        </div>
+
+    </section>
+
+
+
+</main>
+
+@section scripts{
+
+
+    <script src="~/Scripts/HomeAngularJs.js"></script>
+
+}

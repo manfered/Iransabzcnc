@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Iransabzcnc.Entities.Member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Company Member profiles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            Member profile image
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+
+
+            @if (item.MemberImage != null)
+                {
+                <span class="linkDisabled">Create</span> @: |
+                @Html.ActionLink("Edit", "Edit", "MemberImages", new { id = item.MemberId }, null) @: |
+                @Html.ActionLink("Delete", "Delete", "MemberImages", new { id = item.MemberId }, null)
+            }
+            else
+            {
+                @Html.ActionLink("Create", "Create", "MemberImages", new { id = item.MemberId }, null) @: |
+                <span class="linkDisabled">Edit</span> @: |
+                <span class="linkDisabled">Delete</span>
+            }
+
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MemberId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MemberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MemberId })
+        </td>
+    </tr>
+}
+
+</table>

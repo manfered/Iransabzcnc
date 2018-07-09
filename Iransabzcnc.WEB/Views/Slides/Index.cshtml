@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Iransabzcnc.Entities.Slide>
+
+@{
+    ViewBag.Title = "Slides Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sides Index</h2>
+<p>Defines the Slides and the SlidePhotoes inside of each slide.</p>
+<p>approximately 3 slides can be defined</p>
+
+@if (Model.Count() < 4)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SlidePhoto.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Slide Photo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SlidePhoto.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+
+            @if (item.SlidePhoto != null)
+                {
+                <span class="linkDisabled">Create</span> @: |
+                @Html.ActionLink("Edit", "Edit", "SlidePhotoes", new { id = item.SlideID }, null) @: |
+                @Html.ActionLink("Delete", "Delete", "SlidePhotoes", new { id = item.SlideID }, null)
+            }
+            else
+            {
+                @Html.ActionLink("Create", "Create", "SlidePhotoes", new { id = item.SlideID }, null) @: |
+                <span class="linkDisabled">Edit</span> @: |
+                <span class="linkDisabled">Delete</span>
+            }
+
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SlideID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SlideID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SlideID })
+        </td>
+    </tr>
+}
+
+</table>

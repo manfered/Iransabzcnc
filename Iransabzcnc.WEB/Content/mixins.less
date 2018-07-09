@@ -1,0 +1,92 @@
+﻿@import "parameters.less";
+@import "NavbarParameters.less";
+
+.font-face(@font-family, @filepath, @font-weight) {
+    font-family: @font-family;
+    src: url('@{filepath}.eot');
+    src: url('@{filepath}.eot?#iefix') format('embedded-opentype'), url('@{filepath}.woff') format('woff'), url('@{filepath}.ttf') format('truetype');
+    font-weight: @font-weight;
+}
+
+.absouluteVerticalAlign() {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-background-item() {
+    background-repeat: no-repeat;
+    background-position: center 0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navBarBefore() {
+    margin-bottom: @navbarBeforeMarginBottom;
+    padding: @navbarBeforePaddings;
+    background-color: @navbarBeforeBackgroundColor;
+    border: @navbarBeforeBorder;
+}
+
+.navBarAfter() {
+    padding: @navbarAfterPaddings;
+    opacity: @navbarAfterOpacity;
+    background-color: @navbarAfterBackgroundColor;
+    border: @navbarAfterBorder;
+}
+
+.itemTransition(@item, @duration, @effect) {
+    -webkit-transition: @item @duration @effect;
+    -o-transition: @item @duration @effect;
+    transition: @item @duration @effect;
+}
+
+.itemTransition(@item, @duration) {
+    -webkit-transition: @item @duration;
+    -o-transition: @item @duration;
+    transition: @item @duration;
+}
+
+.text-shadow(@shadowH, @shadowV, @shadowBlur, @shadowColor) {
+    text-shadow: @shadowH @shadowV @shadowBlur @shadowColor;
+}
+
+.item-shadow(@shadowH, @shadowV, @shadowBlur, @shadowSpred, @shadowColor) {
+    -moz-box-shadow: @shadowH @shadowV @shadowBlur @shadowSpred @shadowColor;
+    -webkit-box-shadow: @shadowH @shadowV @shadowBlur @shadowSpred @shadowColor;
+    box-shadow: @shadowH @shadowV @shadowBlur @shadowSpred @shadowColor;
+}
+
+.rotating-text-vertical() {
+    display: block;
+    transform: rotate(90deg) translateX(40%);
+    transform-origin: center center 0;
+}
+
+.centerChildInsideParent() {
+    position: relative;
+    top: 50%;
+    transform: translateY(-70%);
+}
+
+.makeItOverlay() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+
+.ServiceDetailParagraphs() {
+    text-align: right;
+    padding: @headersBlockPaddings + 5;
+    font-size: @mainFontSize - 4;
+    margin: 0;
+    color:#333333;
+}
+
+.horizontallyCenterAlign() {
+    display: block;
+    margin: 0px auto;
+}

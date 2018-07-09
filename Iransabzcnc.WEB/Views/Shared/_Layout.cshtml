@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - IranSabz-CNC.com</title>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    @Styles.Render("~/Content/preCss")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <header id="top">
+        <nav class="navbar navbar-inverse navbar-fixed-top cbp-af-header"
+             role="navigation"
+             aria-label="site">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle"
+                            onclick="openNav()">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#top" class="navbar-link-href">خانه</a></li>
+                        <li><a href="#aboutus" class="navbar-link-href">درباره ما</a></li>
+                        <li><a href="#services" class="navbar-link-href">خدمات</a></li>
+                        <li><a href="#contactus" class="navbar-link-href">ارتباط با ما</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        @* side navigation bar for small sizes *@
+        @* container provides a fade effect for the rest of the display *@
+        <div id="mySidenavContainer" class="SidenavContainer">
+            @* enables the user to click/touch on the rest of the display to close the side bar navigation *@
+            <a class="SidenavContainerLinkOverlay" onclick="closeNav()"></a>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#top" class="navbar-link-href">خانه</a>
+                <a href="#aboutus" class="navbar-link-href">درباره ما</a>
+                <a href="#services" class="navbar-link-href">خدمات</a>
+                <a href="#contactus" class="navbar-link-href">ارتباط با ما</a>
+            </div>
+        </div>
+
+    </header>
+    <div class="container-fluid">
+        @RenderBody()
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - IranSabz-CNC.com</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/navAnim")
+    @Scripts.Render("~/bundles/easing")
+    @Scripts.Render("~/bundles/WowJs")
+    @Scripts.Render("~/bundles/nanoGallery2")
+    @Scripts.Render("~/bundles/AngularJs")
+    @Scripts.Render("~/bundles/scrolling")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

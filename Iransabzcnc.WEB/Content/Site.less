@@ -1,0 +1,633 @@
+﻿@import "mixins.less";
+
+@font-face {
+    .font-face('IRANSansWeb','/fonts/IRANSansWeb', normal);
+}
+
+@font-face {
+    .font-face('IRANSansWeb','/fonts/IRANSansWeb_Bold', bold);
+}
+
+@font-face {
+    .font-face('IRANSansWeb','/fonts/IRANSansWeb_Light', 300);
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: @fontFamilies;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: @fullsize - (2 * @formElementMargin);
+    width: @fullsize - (2 * @formElementMargin);
+    margin-right: @formElementMargin;
+    margin-left: @formElementMargin;
+}
+
+.row {
+    margin: 0;
+}
+
+/*navbar*/
+.navbar {
+    .navBarBefore();
+    .itemTransition(all, 0.5s);
+}
+
+.navbar-collapse {
+    direction: rtl;
+}
+
+
+/* animated navbar */
+.cbp-af-header-shrink {
+    .navBarAfter();
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-weight: @navbarFontWeight;
+    font-size: @navbarFontSize;
+    margin: @navbarLinkMargins;
+    color: @navbarLinkDefaultColor;
+    .itemTransition(all, 0.5s, linear);
+    /* narrow line on hover above navbar links */
+    &::after {
+        .itemTransition(all, 0.4s, ease);
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        min-width: 3px;
+        min-height: 0px;
+        background-color: @MainColor;
+    }
+
+    &:hover::after {
+        min-height: 70px;
+    }
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: @MainColor;
+    background-color: @navbarBeforeBackgroundColor;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: @navbarLinkDefaultColor;
+}
+
+.navbar-header {
+    position: relative;
+
+    img {
+        position: absolute;
+        max-width: 15vw;
+        margin-left: 4vw;
+    }
+}
+
+@media (min-width: @smSize) {
+    .navbar-nav > li {
+        float: right;
+    }
+}
+
+
+/*100% height of window size for welcome screen with html5 vh*/
+.Welcome-Screen {
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.Slider-container {
+    min-height: @sliderHeight;
+    height: @sliderHeight;
+}
+
+.welcome-logo {
+    position: absolute;
+    .absouluteVerticalAlign();
+    direction: rtl;
+    right: 15vw;
+    z-index: 1;
+    min-height: @welcome-logo-height;
+    height: @welcome-logo-height;
+    min-width: @welcome-logo-width;
+    width: @welcome-logo-width;
+}
+
+.welcome-logo-top {
+    max-width: @welcome-logo-top-width;
+    min-height: @welcome-logo-top-height;
+    background-color: @MainColor;
+    border: 0;
+}
+
+.welcome-logo-left {
+    position: absolute;
+    top: @welcome-logo-top-height;
+    min-width: @welcome-logo-left-width;
+    min-height: @welcome-logo-middle-height;
+    background-color: @MainColor;
+    border: 0;
+}
+
+.welcome-logo-bottom {
+    position: absolute;
+    bottom: 0;
+    min-width: @welcome-logo-bottom-width;
+    max-width: @welcome-logo-bottom-width;
+    min-height: @welcome-logo-bottom-height;
+    background-color: @MainColor;
+    border: 0;
+}
+
+.welcome-logo-title {
+    position: relative;
+    width: 85vw;
+    min-height: @welcome-logo-middle-height;
+    height: @welcome-logo-middle-height;
+    background-color: transparent;
+    padding-right: @welcome-logo-left-width + 5;
+}
+
+.welcome-logo-title-text {
+    position: absolute;
+    .absouluteVerticalAlign();
+
+    h1 {
+        margin: 0;
+        font-size: 5vw;
+        color: white;
+        font-weight: bold;
+        .text-shadow(0px, 5px, 10px, black);
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 4vw;
+        color: black;
+        font-weight: bold;
+        .text-shadow(0px, 5px, 10px, white);
+    }
+
+    span.mainColorSpan {
+        color: @MainColor;
+        .text-shadow(0px, 5px, 10px, black);
+    }
+}
+
+@media(max-width:600px) {
+    .welcome-logo-title-text {
+        h1 {
+            font-size: 6vw;
+        }
+
+        h2 {
+            font-size: 5vw;
+        }
+    }
+}
+
+
+.welcome-tag {
+    position: absolute;
+    top: 78vh;
+    left: 5vw;
+    min-height: @welcome-tag-height;
+    height: @welcome-tag-height;
+    min-width: @welcome-tag-width;
+    width: @welcome-tag-width;
+    background-color: @welcome-tag-background-color;
+
+    span.verticalSpan {
+        color: white;
+        .rotating-text-vertical();
+        font-size: 3vh;
+    }
+
+    span.mainColorSpan {
+        color: @MainColor;
+    }
+}
+
+
+.WelcomeSlider {
+    height: @sliderHeight;
+}
+
+.carousel-inner {
+    height: 100%;
+
+    .item {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        .carousel-background-item();
+
+        img {
+            height: 100%;
+            max-width: none;
+        }
+    }
+}
+
+
+/*about intro*/
+.intro-img {
+    text-align: center;
+
+    .img-responsive {
+        display: inline;
+    }
+}
+
+.intro-desc {
+    direction: rtl;
+}
+
+
+/*services*/
+.service-item {
+    direction: rtl;
+    float: right;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    min-height: 300px;
+
+    a {
+        transition: all ease-in-out 0.2s;
+        color: black;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    img {
+        width: 60px;
+        margin: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        transition: all ease-in-out 0.3s;
+        opacity: 0.2;
+    }
+
+    &:hover {
+        a {
+            background-color: @MainColor;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        img {
+            background-color: @MainColor;
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 100px;
+            opacity: 1.0;
+        }
+    }
+}
+
+
+/*contact us*/
+.contact-us-container {
+    min-height: 800px;
+    height: auto;
+    background-image: url('/Images/Site/IranSabzCNC_ContactUS.jpg');
+    background-repeat: no-repeat;
+    background-position: left;
+    float: right;
+    width: 100%;
+
+    .contact-us-info {
+        float: right;
+        /*top: @navbarShrinkHeight + @navbarBelowSpace + 10px;*/
+        right: 0;
+        background-color: #222222;
+        min-height: 500px;
+        height: auto;
+        width: 65vw;
+        color: white;
+        direction: rtl;
+        padding: 3vh 3vw;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                color: @MainColor;
+            }
+        }
+    }
+}
+
+@media(max-width:992px) {
+    .contact-us-container {
+        background: none;
+
+        .contact-us-info {
+            width: 100vw;
+        }
+    }
+}
+
+.contactinfo-icon {
+    padding: 0;
+    height: @contactInfoPartsHeight;
+    float: right;
+}
+
+.contactinfo-desc {
+    font-size: @mainFontSize;
+    height: @contactInfoPartsHeight;
+    float: left;
+    padding-top: 30px;
+}
+
+.tel-number {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+
+@media(max-width:@smSize) {
+    .contactinfo-icon, .contactinfo-desc {
+        text-align: center;
+        min-height: @contactInfoPartsHeightSmall;
+        height: auto;
+    }
+}
+
+@media(min-width:@smSize) {
+    .contactinfo-icon {
+        text-align: left;
+        height: @contactInfoPartsHeight;
+    }
+
+    .contactinfo-desc {
+        text-align: right;
+        height: @contactInfoPartsHeight;
+    }
+}
+
+
+/*Members*/
+.members-portion {
+    background-color: @memberPortionBackgroundColor;
+    padding: 20px;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+    font-size: @mainFontSize - 2;
+}
+
+.member-item {
+    position: relative;
+    max-width: 500px;
+    margin: 0px auto;
+
+    a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+    }
+
+    .member-item-info {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        padding: 10px;
+        background-color: White;
+        width: auto;
+        .item-shadow(3px, 5px, 20px, 1px, #c8c3c3);
+
+        p{
+            margin:5px;
+        }
+
+        p.member-title{
+            font-size:24px;
+        }
+    }
+
+    &:hover {
+        .member-item-info {
+            background-color:@MainColor;
+        }
+    }
+}
+
+.MemberSlider {
+    min-height: 550px;
+    height: 550px;
+}
+
+.member-carousel-inner {
+    .item {
+        img {
+            height: @memberProfilePhotoHeight;
+            display: inline;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+
+
+.sidenav, .SidenavContainer {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    right: 0;
+
+
+    a {
+        padding: 8px 32px 8px 8px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+        direction: rtl;
+        min-width: 50vw;
+
+        &:hover {
+            color: @MainColor;
+        }
+
+        &:focus {
+            color: @MainColor;
+        }
+    }
+
+
+    .closebtn {
+        position: absolute;
+        top: 0;
+        left: 25px;
+        font-size: 36px;
+        color: white;
+        direction: ltr;
+    }
+}
+
+.SidenavContainer {
+    width: 100%;
+    z-index: 0;
+    background-color: rgba(255,255,255, 0);
+
+    .SidenavContainerLinkOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 60px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+
+#aboutus, #services, #contactus, .members-portion {
+    padding-top: @navbarShrinkHeight + @navbarBelowSpace;
+}
+
+.section-title-header {
+    direction: rtl;
+    margin: 0px 0px 40px 0px;
+
+    h1,h2 {
+        background-color: @MainColor;
+        display: inline-block;
+        padding: 10px;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0;
+        color: #333333;
+    }
+}
+
+footer {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+/*in result of header transparent background*/
+.navbarBackgroundFix {
+    background-color: @navbarAfterBackgroundColor;
+}
+
+/* seperate pages */
+.seperate-pages-container {
+    padding-top: 160px;
+    direction: rtl;
+    color: #333333;
+
+    h1 {
+        text-align: center;
+        margin-top: 0;
+        padding: @headersBlockPaddings;
+    }
+
+    h2 {
+        margin: 0;
+        padding: @headersBlockPaddings;
+    }
+
+    p {
+        .ServiceDetailParagraphs();
+    }
+
+    .img-responsive {
+        .horizontallyCenterAlign();
+    }
+}
+
+
+/*contactUsUser*/
+.contact-us-full {
+    height: 95vh;
+    position: relative;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+    text-align:center;
+
+    span {
+        font-size: @mainFontSize - 2;
+        font-weight: bold;
+    }
+}
+
+#contactus-response-success {
+    .makeItOverlay();
+}
+
+#reply-portion {
+    .centerChildInsideParent();
+    text-align: center;
+
+    p {
+        text-align: center;
+        color:#333333;
+    }
+}
+
+
+@media (min-width: @smSize) {
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+}
+
+
+/*#aboutus{
+    background-color:blue;
+}
+
+#services{
+    background-color:red;
+}
+
+#contactus{
+    background-color:green;
+}*/

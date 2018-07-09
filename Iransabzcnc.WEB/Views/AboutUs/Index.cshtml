@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Iransabzcnc.Entities.AboutUs>
+
+@{
+    ViewBag.Title = "About US Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>About us</h2>
+<p>Provide Information that will be shown in about us portion of index page.</p>
+<p>We Only have one set of AboutUs information.</p>
+
+@if (Model.Count() == 0)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.Description.Length >= 30)
+                {
+                    @Html.DisplayFor(modelItem => item.Description).ToString().Substring(0, 30);@:...
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Description)
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AboutUsId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AboutUsId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AboutUsId })
+            </td>
+        </tr>
+    }
+
+</table>

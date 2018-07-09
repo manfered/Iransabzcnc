@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Iransabzcnc.Entities.CompanyService>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BriefDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullDescription)
+        </th>
+        <th>
+            Service Icon
+        </th>
+        <th>
+            Service Images
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @if (item.BriefDescription.Length >= 30)
+                {
+                    @Html.DisplayFor(modelItem => item.BriefDescription).ToString().Substring(0, 30);@:...
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.BriefDescription)
+                }
+            </td>
+            <td>
+                @if (item.FullDescription.Length >= 30)
+                {
+                    @Html.DisplayFor(modelItem => item.FullDescription).ToString().Substring(0, 30);@:...
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.FullDescription)
+                }
+            </td>
+            <td>
+
+
+                @if (item.ServiceIconPhoto != null)
+                {
+                    <span class="linkDisabled">Create</span> @: |
+                    @Html.ActionLink("Edit", "Edit", "ServiceIconPhotoes", new { id = item.CompanyServiceID }, null) @: |
+                    @Html.ActionLink("Delete", "Delete", "ServiceIconPhotoes", new { id = item.CompanyServiceID }, null)
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "Create", "ServiceIconPhotoes", new { id = item.CompanyServiceID }, null) @: |
+                    <span class="linkDisabled">Edit</span> @: |
+                    <span class="linkDisabled">Delete</span>
+                }
+
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Edit", "index", "ServicePhotoes", new { id = item.CompanyServiceID }, null)
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CompanyServiceID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CompanyServiceID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CompanyServiceID })
+            </td>
+        </tr>
+    }
+
+</table>
